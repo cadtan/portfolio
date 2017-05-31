@@ -1,4 +1,20 @@
 /* ================================= 
+  Menu Bar
+==================================== */
+
+var $mobileBar = $('.mobile-bar');
+var $navMenu = $(".nav-menu");
+
+
+$mobileBar.on('click', function() {
+	$(this).toggleClass("change");
+	$navMenu.slideToggle("slow");
+});
+
+
+
+
+/* ================================= 
   Parallax
 ==================================== */
 

@@ -49,6 +49,10 @@ a {
 	text-decoration: none;
 }
 
+li {
+	list-style: none;
+}
+
 /* Basic elements
 ===================== */
 
@@ -74,11 +78,82 @@ button {
 }
 
 
+/* Navigation menu
+===================== */
+
+.nav-menu {
+	text-align: center;
+	width: 100%;
+	padding: 0 20px;
+	display: none;
+	margin-top: 71px;
+	background-color: #305260;
+	box-shadow: 5px 5px 5px rgba(73, 123 128, .5);
+}
+
+.nav-menu li a {
+	display: block;
+	text-transform: uppercase;
+	padding: 2em 0;
+	color: #cdfbff;
+	border-bottom: 1px solid #416d80;
+}
+
+.mobile-bar {
+	/*width: 3em;*/
+	display: block;
+	float: right;
+	margin: 1em;
+	cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+	width: 35px;
+	height: 5px;
+	margin-bottom: 8px;
+	background-color: #fff;
+	transition: all ease-in-out 200ms;
+}
+
+.change .bar1 {
+	-webkit-transform: rotate(-45deg) translate(-9px, 6px);
+	transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+	opacity: 0;
+}
+
+.change .bar3 {
+	-webkit-transform: rotate(45deg) translate(-11px, -10px);
+	transform: rotate(45deg) translate(-11px, -10px);
+}
+
 /* header
 ===================== */
 
 .header {
-	background: url(../images/header-bg.jpg);
+	position: absolute;
+	width: 100%;
+	box-shadow: 2px 2px 20px #5c8184;
+}
+
+.logo {
+	font-size: 1.8em;
+	float: left;
+	padding: 10px;
+	color: #cdfbff;
+}
+
+
+
+/* home
+===================== */
+
+.home {
+	background: url(../images/home-bg.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -87,25 +162,22 @@ button {
 	color: #fff;
 }
 
-
-.header p {
+.home p {
 	width: 35%;
 	margin: 20px 0;
 }
 
 .name {
-	/*font-size: 5.5em;*/
-	font-size: 4em;
+	font-size: 3.5em;
 	line-height: 1em;
 	letter-spacing: 5px;
 	text-transform: none;
+	margin-top: 100px;
 }
 
 .title {
-	/*font-size: 1.4em;*/
 	font-size: 1em;
 	font-weight: 400;
-	margin: 1em 0;
 }
 
 .resume-btn {
@@ -127,18 +199,10 @@ button {
 ===================== */
 
 
-.header,
+.home,
 .about {
 	transition: initial;
 }
-
-.text {
-	height: 100px;
-	width: 200px;
-	background-color: #fff;
-	padding-top: 15em;
-}
-
 
 
 /* About
@@ -146,6 +210,7 @@ button {
 
 .about {
 	background: url(../images/about-bg.jpg);
+	background: url(../images/skills-bg.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -181,28 +246,26 @@ button {
 	background-color: #E55701;
 }
 
-.skills {
-	background: url(../images/skills-bg.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-}
 
 /* portfolio
 ===================== */
 
 .portfolio {
-	background-color: #035061;
+	/*background-color: #035061;*/
+	background: url(../images/skills-bg2.jpg);
+	background-attachment: fixed;
+	background-position: 0 50%;
 	color: #fff;
 }
 
 .project {
-	background-color: #03333D;
+	background-color: rgba(1, 59, 66, .5);
+	border: 1px solid #fff;
 	font-size: 1.5em;
-	line-height: 400px;
-	height: 400px;
+	line-height: 200px;
+	width: 100%;
 	margin-bottom: 2em;
+	/*margin-top: -50px;*/
 	text-align: center;
 }
 
@@ -211,6 +274,8 @@ button {
 
 .contact {
 	color: #000;
+	/*background: url(../images/about-bg.jpg);*/
+	background-position: 0% 0;
 }
 
 a.email {
@@ -225,15 +290,95 @@ a.email {
 	margin-right: 2em;
 }
 
+/* footer
+===================== */
+
+footer {
+	background-color: #025764;
+	padding: 1em;
+}
+
 
 /* Media Query
 ===================== */
 
 @media (min-width: 960px) {
+	
+	/********** home ***********/
 
-	.header {
-		/*padding-top: 10vh;*/
+	.home {
 		height: 100vh;
+	}
+
+	.name {
+		font-size: 5.5em;
+	}
+
+
+	.title {
+		font-size: 1.4em;
+	}
+
+	.mobile-bar {
+		display: none;
+	}
+
+	.nav-menu {
+		display: block;
+		margin-top: 0;
+		background: transparent;	
+		box-shadow: 2px 2px 20px #5c8184;	
+	}
+
+	.nav-menu ul {
+		float: right;
+	}
+
+	.nav-menu li {
+		display: inline-block;
+	}
+
+	.nav-menu li a {
+		font-size: 0.8em;
+		padding: 20px;
+		border-bottom: 0;
+	}
+
+	/********** About ***********/
+
+	.about {
+		height: 500px;
+	}
+
+	.info {
+		float: left;
+	}
+
+	.skills {
+		float: right;
+		padding-top: 100px;
+	}
+
+	.info,
+	.skills {
+		width: 40%;
+	}
+
+	.info {
+		margin-right: 5em;
+	}
+
+
+	/********** Portfolio ***********/
+
+	.project {
+		float: left;
+		margin-right: 1%;
+		width: 32%;
+	}
+
+	.project:last-child {
+		margin-right: 0;
 	}
 
 }
