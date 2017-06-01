@@ -43,27 +43,33 @@ function parallax() {
   Progress bar
 ==================================== */
 
-var progressBars = $('.progress-bar');
+var progress = $('.progress');
 var progressWrap = $('.progress-wrap');
 
-progressBar();
+moveProgressBar();
 // on browser resize...
-$(window).resize(function() {
-    progressBar();
+$(window).resize( function() {
+    moveProgressBar();
 });
 
-function progressBar() {
-	// Loop thru all progress bars and animate each
-	$(progressBars).each( function() {
+function moveProgressBar() {
+	// Loop thru all progress bars and animate..
+	$(progress).each( function() {
 		var getPercent = $(this).data('percent');
 		var	progressBarWidth = $(progressWrap).width();
-		var progressTotal = ( getPercent/100 ) * progressBarWidth;
+		var progressTotal = (getPercent/100) * progressBarWidth;
+		var animationLength = 2000;
+		var percentSpan = $(this).parent().parent().find('.percent');
 
+		// Animate progress bar
 		$(this).animate({
 			width: progressTotal
-		}, { duration: 1000});
+		}, animationLength, function() { 
+				// Show percent on each progress bar
+				percentSpan.html(getPercent + "%");
+			}
+		);
 	});
-
 }
 
 

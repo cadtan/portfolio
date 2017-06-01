@@ -7,6 +7,7 @@
 body {
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 2px;
+	line-height: 1.5em;
 }
 
 img {
@@ -57,7 +58,7 @@ li {
 ===================== */
 
 .container {
-	padding: 2em;
+	padding: 6em 4em;
 }
 
 .about-textbox {
@@ -95,6 +96,7 @@ button {
 	display: block;
 	text-transform: uppercase;
 	padding: 2em 0;
+	font-size: .8em;
 	color: #cdfbff;
 	border-bottom: 1px solid #416d80;
 }
@@ -157,7 +159,6 @@ button {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-attachment: fixed;
 	text-align: left;
 	color: #fff;
 }
@@ -180,7 +181,7 @@ button {
 	font-weight: 400;
 }
 
-.resume-btn {
+.portfolio-btn {
 	text-transform: uppercase;
 	font-weight: 700;
 	background-color: #f65d04;
@@ -214,36 +215,67 @@ button {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-attachment: fixed;
 	color: #fff;
 }
 
 .about p {
 	width: 100%;
+	max-width: 700px;
+	font-size: .9em;
+	margin-bottom: 1em;
+}
+
+.resume-btn {
+	text-transform: uppercase;
+	font-weight: 700;
+	background-color: #f65d04;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	margin-bottom: 6em;
 }
 
 
 /* skills
 ===================== */
 
-.progress-wrap,
 .progress-bar {
-	height: 10px;
+	font-size: .7em;
+	margin-bottom: 1.5em;
+	text-transform: uppercase;
+}
+
+.progress-wrap,
+.progress {
+	height: 7px;
 }
 
 .progress-wrap {
 	position: relative;
-	margin: 20px 0;
-	width: 100%;
-	background-color: #fff;
+	background-color: #7d7d7d;
 }
 
-.progress-bar {
+.progress {
 	position: absolute;
 	width: 0%;
 	left: 0;
 	top: 0;
-	background-color: #E55701;
+	background-color: #f65d04;
+}
+
+.skills {
+	margin-bottom: 100px;
+}
+
+.skill {
+	float: left;
+	width: 50%;
+}
+
+.percent {
+	float: right;
+	text-align: right;
+	width: 50%;
 }
 
 
@@ -252,10 +284,15 @@ button {
 
 .portfolio {
 	/*background-color: #035061;*/
-	background: url(../images/skills-bg2.jpg);
-	background-attachment: fixed;
+	background: url(../images/skills-bg.jpg);
 	background-position: 0 50%;
 	color: #fff;
+}
+
+.portfolio h2 {
+	position: absolute;
+	margin-top: -80px;
+	left: 1em;
 }
 
 .project {
@@ -265,7 +302,6 @@ button {
 	line-height: 200px;
 	width: 100%;
 	margin-bottom: 2em;
-	/*margin-top: -50px;*/
 	text-align: center;
 }
 
@@ -302,12 +338,23 @@ footer {
 /* Media Query
 ===================== */
 
-@media (min-width: 960px) {
+@media (min-width: 768px) {
 	
-	/********** home ***********/
+	/********** About ***********/
+
+	.progress-bar {
+		font-size: .8em;
+	}
+
+}
+
+@media (min-width: 1024px) {
+	
+	/********** Home ***********/
 
 	.home {
 		height: 100vh;
+		background-attachment: fixed;
 	}
 
 	.name {
@@ -347,29 +394,38 @@ footer {
 	/********** About ***********/
 
 	.about {
-		height: 500px;
+		background-attachment: fixed;
+		padding-bottom: 150px;
+	}
+
+	.about h2 {
+		font-size: 2.5em;
+	}
+
+	.about p {
+	  font-size: .9em;
+	  max-width: 100%;
 	}
 
 	.info {
 		float: left;
+		width: 45%;
 	}
 
 	.skills {
 		float: right;
-		padding-top: 100px;
+		padding-top: 125px;
+		width: 45%;
+		margin-bottom: 0;
+		font-size: .9em;
+		font-weight: 700;
 	}
-
-	.info,
-	.skills {
-		width: 40%;
-	}
-
-	.info {
-		margin-right: 5em;
-	}
-
 
 	/********** Portfolio ***********/
+
+	.portfolio {
+		background-attachment: fixed;
+	}
 
 	.project {
 		float: left;
