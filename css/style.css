@@ -58,7 +58,7 @@ li {
 ===================== */
 
 .container {
-	padding: 6em 4em;
+	padding: 4em;
 }
 
 .about-textbox {
@@ -76,6 +76,7 @@ li {
 button {
 	outline: none;
 	padding: 1em 2em;
+	cursor: pointer;
 }
 
 
@@ -282,35 +283,129 @@ button {
 /* portfolio
 ===================== */
 
+
 .portfolio {
-	/*background-color: #035061;*/
+	background-color: #26474e;
 	background: url(../images/skills-bg.jpg);
 	background-position: 0 50%;
 	color: #fff;
+	background: #26474e; /* Old browsers */
+	background: -moz-linear-gradient(top, #26474e 0%, #3c6472 100%, #496568 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #26474e 0%,#3c6472 100%,#496568 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #26474e 0%,#3c6472 100%,#496568 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26474e', endColorstr='#496568',GradientType=0 ); /* IE6-9 */
+}
+
+.portfolio .container {
+	/*padding: 4em 8em;*/
 }
 
 .portfolio h2 {
-	position: absolute;
-	margin-top: -80px;
-	left: 1em;
+	margin-bottom: 50px;
+	/*text-align: center;*/
 }
 
 .project {
+	position: relative;
 	background-color: rgba(1, 59, 66, .5);
-	border: 1px solid #fff;
 	font-size: 1.5em;
-	line-height: 200px;
 	width: 100%;
+	height: 200px;
 	margin-bottom: 2em;
 	text-align: center;
+	overflow: hidden;
+	opacity: .8;
 }
+
+.project-title {
+	position: absolute;
+	left: 0em;
+	right: 0em;
+	bottom: 0em;
+	font-size: .5em;
+	text-transform: uppercase;
+	background: rgba(0,0,0,.8);
+	transform: translateY(100%);
+	transition: all ease-in-out 200ms;
+}
+
+.portfolio .project:hover .project-title {
+	transform: translateY(0%);
+}
+
+
+/*------ LightBox ------ */
+
+#overlay {
+	background-color: #26474e;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom:0;
+	left: 0;
+	position: fixed;
+	display: none;
+}
+
+.slideContainer {
+	color: #fff;
+	margin: 0 auto;
+	padding-top: 50px;
+	width: 60%;
+	text-align: center;
+}
+
+.close-btn {
+	position: absolute;
+	color: #fff;
+	font-weight: 700;
+	padding: 20px;
+	right: 2em;
+	top: 2em;
+	border: 0;
+	background-color: transparent;
+	text-transform: uppercase;
+	z-index: 333;
+}
+
+.next-btn,
+.prev-btn {
+	position: absolute;
+	color: #fff;
+	font-size: 5em;
+	padding: 0;
+	top: 0;
+	bottom: 0;
+	border: 0;
+	background-color: transparent;
+	/*background-color: yellow;*/
+}
+
+.next-btn {
+	right: 0;
+}
+
+.prev-btn {
+	left: 0;
+}
+
+.next-btn span,
+.prev-btn span {
+	display: block;
+	line-height: 5em;
+	padding: 20px;
+}
+
 
 /* contact
 ===================== */
 
 .contact {
-	color: #000;
-	/*background: url(../images/about-bg.jpg);*/
+	color: #fff;
+	background: url(../images/contact-bg.jpg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-color: #3c6472;
 	background-position: 0% 0;
 }
 
@@ -337,6 +432,23 @@ footer {
 
 /* Media Query
 ===================== */
+
+@media (min-width: 550px) {
+
+	/********** Portfolio ***********/
+
+	.project {
+		float: left;
+		margin-right: 6%;
+		width: 47%;
+	}
+
+	.project:nth-child(2n + 0) { 
+		margin-right: 0;
+	}
+
+
+}
 
 @media (min-width: 768px) {
 	
@@ -395,7 +507,6 @@ footer {
 
 	.about {
 		background-attachment: fixed;
-		padding-bottom: 150px;
 	}
 
 	.about h2 {
@@ -424,17 +535,30 @@ footer {
 	/********** Portfolio ***********/
 
 	.portfolio {
-		background-attachment: fixed;
+		/*background-attachment: fixed;*/
 	}
 
 	.project {
-		float: left;
-		margin-right: 1%;
-		width: 32%;
+		margin-right: 6%;
+		width: 29.333333%;
 	}
 
-	.project:last-child {
+	.project:nth-child(2n + 0) { 
+		margin-right: 6%;
+	}
+
+	.project:nth-child(3n + 0) { 
 		margin-right: 0;
+	}
+
+	/********** Contact ***********/
+
+	.contact {
+		/*background-attachment: fixed;*/
+	}
+
+	.contact p {
+		width: 40%;
 	}
 
 }
