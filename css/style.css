@@ -8,6 +8,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 	letter-spacing: 2px;
 	line-height: 1.5em;
+	font-size: .9em;
 }
 
 img {
@@ -33,8 +34,9 @@ h1 {
 }
 
 h2 {
-	font-size: 2em;
+	font-size: 1.6em;
 	padding: 1em 0;
+	line-height: 1.2em;
 }
 
 h3 {
@@ -103,7 +105,6 @@ button {
 }
 
 .mobile-bar {
-	/*width: 3em;*/
 	display: block;
 	float: right;
 	margin: 1em;
@@ -141,7 +142,7 @@ button {
 	position: fixed;
 	width: 100%;
 	box-shadow: 2px 2px 20px #5c8184;
-	z-index: 9999;
+	z-index: 333;
 }
 
 .logo {
@@ -222,7 +223,6 @@ button {
 .about p {
 	width: 100%;
 	max-width: 700px;
-	font-size: .9em;
 	margin-bottom: 1em;
 }
 
@@ -374,6 +374,7 @@ button {
 	left: 0;
 	position: fixed;
 	display: none;
+	z-index: 999;
 }
 
 .slideContainer {
@@ -484,7 +485,7 @@ button {
 /* contact
 ===================== */
 
-.contact {
+#contact {
 	color: #fff;
 	background: url(../images/contact-bg.jpg);
 	-webkit-background-size: cover;
@@ -493,24 +494,47 @@ button {
 	background-position: 0% 0;
 }
 
-a.email {
-	display: block;
+#contact p {
+	max-width: 230px;
+	margin-top: 0;
+}
+
+.email {
+	display: inline-block;
 	margin: 2em 0;
-	color: #035061;
+	color: #fff;
+}
+
+.email a {
+	display: inline-block;
+	color: #00f8ff;
+}
+
+.email a:hover {
+	color: #BABABA;
 }
 
 .social-icon {
-	width: 10%;
+	width: 15%;
+	max-width: 30px;
 	float: left;
 	margin-right: 2em;
 }
+
+
 
 /* footer
 ===================== */
 
 footer {
 	background-color: #025764;
-	padding: 1em;
+	text-transform: uppercase;
+	font-size: .6em;
+	text-align: center;
+}
+
+footer .container {
+	padding: 1em 4em;
 }
 
 
@@ -542,6 +566,23 @@ footer {
 		font-size: .8em;
 	}
 
+	/********** Contact ***********/
+
+	#contact p {
+		max-width: 600px;
+	}
+
+	.connect {
+		float: left;
+		width: 45%;
+	}
+
+	.social-group {
+		float: right;
+		width: 40%;
+		padding-top: 180px;
+	}
+
 }
 
 @media (min-width: 1024px) {
@@ -567,7 +608,7 @@ footer {
 	}
 
 	.nav-menu {
-		display: block;
+		display: block ;
 		margin-top: 0;
 		background: transparent;	
 		box-shadow: 2px 2px 20px #5c8184;	
@@ -633,16 +674,6 @@ footer {
 
 	.project:nth-child(3n + 0) { 
 		margin-right: 0;
-	}
-
-	/********** Contact ***********/
-
-	.contact {
-		/*background-attachment: fixed;*/
-	}
-
-	.contact p {
-		width: 40%;
 	}
 
 }
