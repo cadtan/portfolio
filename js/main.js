@@ -2,13 +2,23 @@
   Menu Bar
 ==================================== */
 
-var $mobileBar = $('.mobile-bar');
-var $navMenu = $(".nav-menu");
+var mobileBar = $('.mobile-bar');
+var navMenu = $(".nav-menu");
+var navLink = $(".nav-menu li a");
 
-
-$mobileBar.on('click', function() {
+// Mobile menu
+$(mobileBar).on('click', function() {
 	$(this).toggleClass("change");
-	$navMenu.slideToggle("slow");
+	navMenu.slideToggle("slow");
+});
+
+// Scroll to section
+navLink.on('click', function() {
+	var target =  '#' + $(this).attr('data-target');
+	console.log(target)
+	$('html, body').animate({
+		scrollTop: $(target).offset().top
+	}, 1000);
 });
 
 
@@ -20,7 +30,7 @@ $mobileBar.on('click', function() {
 // 	parallax();
 // });
 
-// disable parallax on mobile
+// Disable parallax on mobile
 if( $(window).width() > 800) {
   $(window).scroll(function() {	 
     parallax();
@@ -36,11 +46,8 @@ function parallax() {
 	$('.parallax-bg2').css('background-position', 'center ' + -(wScroll*0.3) + 'px');
 }
 
-
-
-
 /* ================================= 
-  Portfolio Lightbox
+  Portfolio gallery
 ==================================== */
 
 // Dynamic elements
@@ -109,7 +116,7 @@ var projects = [
 // Print html
 function printHtml() {
 	var html = "";
-	// get each image and descriptionription from array
+	// Get each image and descriptionription from array
 	$.each( projects, function( key, value ) {
 		// console.log(key)
 		html += "<li class='project animation-element slide-left'>" ;		
@@ -125,7 +132,12 @@ function printHtml() {
 }
 printHtml();
 
-// Display slide content
+
+
+/*   Lightbox
+==================================== */
+
+// Display slides
 function showSlide() {
 	var index = currentSlide;
 	var slideImage = projects[index].largeImageUrl;
@@ -160,11 +172,7 @@ $('.gallery li').on('click', projectLink, function( event ){
 	showSlide();
 });
 
-// Close lightbox
-$closeBtn.on('click', function() {
-	$overlay.hide();
-});
-
+// next button
 $nextBtn.on('click', function() {
 	currentSlide++;
 	if( currentSlide >= projects.length ) {
@@ -173,6 +181,7 @@ $nextBtn.on('click', function() {
 	showSlide();
 });
 
+// previous button
 $prevBtn.on('click', function() {
 	currentSlide--;
 	if( currentSlide <= -1 ) {
@@ -181,6 +190,10 @@ $prevBtn.on('click', function() {
 	showSlide();
 });
 
+// Close lightbox
+$closeBtn.on('click', function() {
+	$overlay.hide();
+});
 
 
 
