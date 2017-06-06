@@ -37,18 +37,205 @@ function parallax() {
 }
 
 
+
+
+/* ================================= 
+  Portfolio Lightbox
+==================================== */
+
+// Dynamic elements
+var $overlay = $("<div id='overlay'></div>");
+var $slideContainer = $("<div class='slideContainer'></div>");
+var $image = $("<img class='slide-image'>");
+var $content = $("<div class='content'></div>");
+var $nextBtn = $("<button class='next-btn'><span>></span></button>");
+var $prevBtn = $("<button class='prev-btn'><span><</span></button>");
+var $closeBtn = $("<button class='close-btn'><span class='close-cir'>x</span>Close</button>");
+
+// Variables
+var gallery = $('.gallery');
+var projectLink = $('.project a');
+var currentSlide = 0;
+
+// Append dynamic elements
+$slideContainer.append($closeBtn);
+$slideContainer.append($nextBtn);
+$slideContainer.append($prevBtn);
+$slideContainer.append($image);
+$slideContainer.append($content);
+$overlay.append($slideContainer);
+$("body").append($overlay);
+
+// Projects array
+var projects = [
+	{
+		imageUrl: "images/project1.jpg",
+		largeImageUrl: "images/project1-large.png",
+		title: "project title",
+		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+	},
+	{
+		imageUrl: "images/project2.jpg",
+		largeImageUrl: "images/project2-large.png",
+		title: "project title",
+		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+	},
+	{
+		imageUrl: "images/project3.jpg",
+		largeImageUrl: "images/project3-large.png",
+		title: "project title",
+		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+	},
+	{
+		imageUrl: "images/project4.jpg",
+		largeImageUrl: "images/project4-large.png",
+		title: "project title",
+		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+	},
+	{
+		imageUrl: "images/project5.jpg",
+		largeImageUrl: "images/project5-large.png",
+		title: "project title",
+		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+	},
+	{
+		imageUrl: "images/project6.jpg",
+		largeImageUrl: "images/project6-large.png",
+		title: "project title",
+		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+	}
+]
+
+// Print html
+function printHtml() {
+	var html = "";
+	// get each image and descriptionription from array
+	$.each( projects, function( key, value ) {
+		// console.log(key)
+		html += "<li class='project animation-element slide-left'>" ;		
+		html += "<a href='"+ value.imageUrl + "'" + ">";
+		html += "<img src='" + value.imageUrl + "'" + ">";
+		html += "</a>";		
+		html += "<figcaption class='project-title'>";
+		html += "<p>" + value.title + "</p>";
+		html += "</figcaption>";
+		html += "</li>";
+	});
+	$(gallery).html(html);	
+}
+printHtml();
+
+// Display slide content
+function showSlide() {
+	var index = currentSlide;
+	var slideImage = projects[index].largeImageUrl;
+	var slideDescription = projects[index].description;
+	$overlay.show();
+
+
+
+	$image.attr('src', slideImage);
+	// $image.addClass('fade-in');
+	$image.fadeIn(1000);
+
+	// if(	$image.hasClass('fade-in') ) {
+	// 	$image.removeClass('fade-in');
+	// 	// $image.addClass('fade-out');
+		
+	// } else {
+		
+	// }
+	
+	
+	// $image.removeClass('fade-out');
+	
+
+	$content.html("<p>" + slideDescription + "</p>");
+}
+
+// Show overlay on click event
+$('.gallery li').on('click', projectLink, function( event ){
+	event.preventDefault();	
+	currentSlide = $(this).index();
+	showSlide();
+});
+
+// Close lightbox
+$closeBtn.on('click', function() {
+	$overlay.hide();
+});
+
+$nextBtn.on('click', function() {
+	currentSlide++;
+	if( currentSlide >= projects.length ) {
+		currentSlide = 0;
+	}
+	showSlide();
+});
+
+$prevBtn.on('click', function() {
+	currentSlide--;
+	if( currentSlide <= -1 ) {
+		currentSlide = projects.length - 1;
+	} 
+	showSlide();
+});
+
+
+
+
+
+/* ================================= 
+  Animate elements within view
+==================================== */
+
+var $animation_elements = $('.animation-element');
+var $window  = $(window);
+
+function check_if_in_view ( elem ) {
+	var $element = $(elem);
+	// return current vertical scrollbar pos
+	var windowTopPosition = $window.scrollTop();
+	// return height of window (viewport)
+	var windowHeight = $window.height();
+	var windowBottomPosition = windowTopPosition + windowHeight;
+	var elementTopPosition = $element.offset().top;
+	//  return height of element including its padding & border
+	var elementHeight = $element.outerHeight();
+	var elementBottomPosition = elementTopPosition + elementHeight;
+
+	//check to see if this current container is within viewport
+	return ( (elementBottomPosition >= windowTopPosition) && (elementTopPosition <= windowBottomPosition) );
+
+}
+
+function checkAnimation() {
+	$.each( $animation_elements, function() {
+	  var $element = $(this);
+	  // if ( $element.hasClass('in-view') ) return;
+	  // if elem is within viewport is true...
+	  if ( check_if_in_view( $element ) ) {
+	    // add animation class
+	    $element.addClass('in-view');
+	  }
+	  // animate progress bar if in view
+	  if ( check_if_in_view( $element ) && $element.attr("id") === "skills-section" ) {
+	  	// console.log("in-view");
+	    moveProgressBar();
+	  } 
+	});
+}
+
+$window.on('scroll resize', checkAnimation);
+$window.trigger('scroll');
+
+
 /* ================================= 
   Progress bar
 ==================================== */
 
 var progress = $('.progress');
 var progressWrap = $('.progress-wrap');
-
-moveProgressBar();
-// on browser resize...
-$(window).resize( function() {
-    moveProgressBar();
-});
 
 function moveProgressBar() {
 	// Loop thru all progress bars and animate..
@@ -69,135 +256,6 @@ function moveProgressBar() {
 		);
 	});
 }
-
-
-/* ================================= 
-  Portfolio Lightbox
-==================================== */
-
-// Dynamic elements
-var $overlay = $("<div id='overlay'></div>");
-var $slideContainer = $("<div class='slideContainer'></div>");
-var $image = $("<img>");
-var $content = $("<div class='content'></div>");
-var $nextBtn = $("<button class='next-btn'><span>></span></button>");
-var $prevBtn = $("<button class='prev-btn'><span><</span></button>");
-var $closeBtn = $("<button class='close-btn'>X Close</button>");
-
-// Variables
-var gallery = $('.gallery');
-var projectLink = $('.project a');
-var currentSlide = 0;
-
-// Append dynamic elements
-$slideContainer.append($closeBtn);
-$slideContainer.append($nextBtn);
-$slideContainer.append($prevBtn);
-$slideContainer.append($image);
-$slideContainer.append($content);
-$overlay.append($slideContainer);
-$("body").append($overlay);
-
-// Projects array
-var projects = [
-	{
-		imageUrl: "images/project1.jpg",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-	},
-	{
-		imageUrl: "images/project2.jpg",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-	},
-	{
-		imageUrl: "images/project3.jpg",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-	},
-	{
-		imageUrl: "images/project4.jpg",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-	},
-	{
-		imageUrl: "images/project5.jpg",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-	},
-	{
-		imageUrl: "images/project6.jpg",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-	}
-]
-
-// Print html
-function printHtml() {
-	var html = "";
-	// get each image and descriptionription from array
-	$.each( projects, function( key, value ) {
-		// console.log(key)
-		html += "<li class='project'>" ;		
-		html += "<a href='"+ value.imageUrl + "'" + ">";
-		html += "<img src='" + value.imageUrl + "'" + ">";
-		html += "</a>";		
-		html += "<figcaption class='project-title'>";
-		html += "<p>" + value.title + "</p>";
-		html += "</figcaption>";
-		html += "</li>";
-	});
-	$(gallery).html(html);	
-}
-printHtml();
-
-// Display slide content
-function showSlide() {
-	var index = currentSlide;
-	var slideImage = projects[index].imageUrl;
-	var slideDescription = projects[index].description;
-	// console.log("current " + index)
-	$overlay.show();
-	$image.attr('src', slideImage);
-	$content.html("<p>" + slideDescription + "</p>");
-}
-
-// Show overlay on click event
-$('.gallery li').on('click', projectLink, function( event ){
-	event.preventDefault();
-	// console.log($(this).index());	
-	currentSlide = $(this).index();
-	showSlide();
-});
-
-// Close lightbox when click on close button
-$closeBtn.on('click', function() {
-	$overlay.hide();
-});
-
-$nextBtn.on('click', function(){
-	currentSlide++;
-	if( currentSlide >= projects.length ) {
-		console.log("over")
-		currentSlide = 0;
-	}
-	showSlide();
-});
-
-$prevBtn.on('click', function(){
-	currentSlide--;
-	console.log(currentSlide)
-	if( currentSlide <= -1 ) {
-		console.log("over")
-		currentSlide = projects.length - 1;
-	} 
-	showSlide();
-});
-
-
-
-
-
 
 
 
