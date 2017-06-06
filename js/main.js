@@ -1,3 +1,5 @@
+
+
 /* ================================= 
   Menu Bar
 ==================================== */
@@ -5,6 +7,16 @@
 var mobileBar = $('.mobile-bar');
 var navMenu = $(".nav-menu");
 var navLink = $(".nav-menu li a");
+
+
+// Resize nav menu on scroll
+$(document).on("scroll", function() {
+	if($(document).scrollTop()>100) {
+		$(navMenu).removeClass("stretch").addClass("shrink");
+	} else {
+		$(navMenu).removeClass("shrink").addClass("stretch");
+	}
+});
 
 // Mobile menu
 $(mobileBar).on('click', function() {

@@ -79,6 +79,17 @@ button {
 	outline: none;
 	padding: 1em 2em;
 	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: 700;
+	background-color: #f65d04;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	transition: all ease-in 100ms
+}
+
+button:hover {
+	background-color: #F18F02;
 }
 
 
@@ -138,7 +149,7 @@ button {
 /* header
 ===================== */
 
-.header {
+header {
 	position: fixed;
 	width: 100%;
 	box-shadow: 2px 2px 20px #5c8184;
@@ -151,6 +162,8 @@ button {
 	padding: 10px;
 	color: #cdfbff;
 }
+
+
 
 
 /* home
@@ -184,12 +197,6 @@ button {
 }
 
 .portfolio-btn {
-	text-transform: uppercase;
-	font-weight: 700;
-	background-color: #f65d04;
-	border: 0;
-	border-radius: 5px;
-	color: #fff;
 	margin-bottom: 2em;
 }
 
@@ -200,7 +207,6 @@ button {
 
 /* parallax
 ===================== */
-
 
 .home,
 .about {
@@ -227,12 +233,6 @@ button {
 }
 
 .resume-btn {
-	text-transform: uppercase;
-	font-weight: 700;
-	background-color: #f65d04;
-	border: 0;
-	border-radius: 5px;
-	color: #fff;
 	margin-bottom: 6em;
 }
 
@@ -440,6 +440,11 @@ button {
 	z-index: 333;
 }
 
+.close-btn:hover {
+	background-color: transparent;
+	color: ##CCCCCC;
+}
+
 .close-cir {
 	padding: 1px 5px;
 	margin-right: 6px;
@@ -472,6 +477,12 @@ button {
 
 .prev-btn {
 	left: 0;
+}
+
+.next-btn:hover,
+.prev-btn:hover {
+	color: #517C95;
+	background-color: transparent;
 }
 
 .next-btn span,
@@ -609,9 +620,9 @@ footer .container {
 
 	.nav-menu {
 		display: block ;
-		margin-top: 0;
-		background: transparent;	
-		box-shadow: 2px 2px 20px #5c8184;	
+		margin-top: 0;	
+		box-shadow: 2px 2px 20px #5c8184;
+		transition: all ease-in-out 200ms;	
 	}
 
 	.nav-menu ul {
@@ -624,9 +635,25 @@ footer .container {
 
 	.nav-menu li a {
 		font-size: 0.8em;
+		font-weight: 700;
 		padding: 20px;
 		border-bottom: 0;
 	}
+
+	.nav-menu li a:hover {
+		color: #fff;
+	}
+
+	.nav-menu.stretch {
+		line-height: 1.5em;	
+		background: transparent;
+	} 
+
+	.nav-menu.shrink {
+		background-color: rgba(42,67,75, .6);
+		line-height: .2em;	
+	}
+
 
 	/********** About ***********/
 
