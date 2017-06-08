@@ -67,8 +67,8 @@ var $overlay = $("<div id='overlay'></div>");
 var $slideContainer = $("<div class='slideContainer'></div>");
 var $image = $("<img class='slide-image'>");
 var $content = $("<div class='content'></div>");
-var $nextBtn = $("<button class='next-btn'><span>></span></button>");
-var $prevBtn = $("<button class='prev-btn'><span><</span></button>");
+var $nextBtn = $("<button class='next-btn'><span></span></button>");
+var $prevBtn = $("<button class='prev-btn'><span></span></button>");
 var $closeBtn = $("<button class='close-btn'><span class='close-cir'>x</span>Close</button>");
 
 // Variables
@@ -130,8 +130,7 @@ function printHtml() {
 	var html = "";
 	// Get each image and descriptionription from array
 	$.each( projects, function( key, value ) {
-		// console.log(key)
-		html += "<li class='project animation-element slide-left'>" ;		
+		html += "<li class='project animation-element slide-left'>" ;
 		html += "<a href='"+ value.imageUrl + "'" + ">";
 		html += "<img src='" + value.imageUrl + "'" + ">";
 		html += "</a>";		
@@ -152,30 +151,27 @@ printHtml();
 // Display slides
 function showSlide() {
 	var index = currentSlide;
-	var slideImage = projects[index].largeImageUrl;
+	var getLargeImage = projects[index].largeImageUrl;
+	var slideImage = $image.attr('src', getLargeImage);
 	var slideDescription = projects[index].description;
 	$overlay.show();
 
 
+	if(	$(slideImage).hasClass('slide-in') ) {
+		$(slideImage).removeClass('slide-in').addClass('slide-out');			
+	} else {
+		$(slideImage).addClass('slide-in').removeClass('slide-out');
+	}
 
-	$image.attr('src', slideImage);
-	// $image.addClass('fade-in');
-	$image.fadeIn(1000);
 
-	// if(	$image.hasClass('fade-in') ) {
-	// 	$image.removeClass('fade-in');
-	// 	// $image.addClass('fade-out');
-		
-	// } else {
-		
-	// }
 	
-	
-	// $image.removeClass('fade-out');
-	
+	$image.attr('src', getLargeImage)
 
 	$content.html("<p>" + slideDescription + "</p>");
 }
+
+
+
 
 // Show overlay on click event
 $('.gallery li').on('click', projectLink, function( event ){
@@ -190,6 +186,8 @@ $nextBtn.on('click', function() {
 	if( currentSlide >= projects.length ) {
 		currentSlide = 0;
 	}
+	
+
 	showSlide();
 });
 
