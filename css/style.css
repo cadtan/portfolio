@@ -88,9 +88,6 @@ button {
 	transition: all ease-in 100ms
 }
 
-button:hover {
-	background-color: #F18F02;
-}
 
 
 /* Navigation menu
@@ -103,7 +100,7 @@ button:hover {
 	display: none;
 	margin-top: 71px;
 	background-color: #305260;
-	box-shadow: 5px 5px 5px rgba(73, 123 128, .5);
+	box-shadow: 5px 5px 5px rgba(73, 123, 128, .5);
 }
 
 .nav-menu li a {
@@ -193,11 +190,19 @@ header {
 }
 
 .portfolio-btn {
+	display: inline-block;
+	color: #fff;
+	font-weight: 700;
+	text-transform: uppercase;
 	margin-bottom: 2em;
+	padding: 1em 2em;
+	background-color: #f65d04;
+	cursor: pointer;
+	transition: all ease-in-out 200ms;
 }
 
-.portfolio-btn a {
-	color: #fff;
+.portfolio-btn:hover {
+	background-color: #F18F02;
 }
 
 .orange {
@@ -233,6 +238,18 @@ header {
 
 .resume-btn {
 	margin-bottom: 6em;
+	display: inline-block;
+	color: #fff;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 2em;
+	padding: 1em 2em;
+	background-color: #f65d04;
+	cursor: pointer;
+}
+
+.resume-btn:hover {
+	background-color: #F18F02;
 }
 
 
@@ -283,7 +300,6 @@ header {
 ===================== */
 
 .portfolio {
-	background-color: #26474e;
 	background: url(../images/skills-bg.jpg);
 	background-position: 0 50%;
 	color: #fff;
@@ -291,7 +307,7 @@ header {
 	background: -moz-linear-gradient(top, #26474e 0%, #3c6472 100%, #496568 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, #26474e 0%,#3c6472 100%,#496568 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom, #26474e 0%,#3c6472 100%,#496568 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26474e', endColorstr='#496568',GradientType=0 ); /* IE6-9 */
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26474e', endColorstr='#496568',GradientType=0 );*/ /* IE6-9 */
 }
 
 .portfolio .animation-element {
@@ -382,7 +398,7 @@ header {
 	padding-top: 1em;
 	width: 100%;
 	height: 100%;
-	top: 45vh;
+	top: 220px;
 	background-color: rgba(0,0,0, .6);
   	z-index: 1;
 }
@@ -485,7 +501,7 @@ header {
 .content p {
 	max-width: 65em;
 	text-align: center;
-	padding: 2em;
+	padding: 1em;
   	font-size: .8em;
   	color: #fff;
 }
@@ -614,13 +630,11 @@ footer .container {
 		margin-right: 0;
 	}
 
-
 	.content-overlay {
 		position: absolute;
 		width: 100%;
-		top: 60vh;
+		top: 350px;
 	}
-
 
 }
 

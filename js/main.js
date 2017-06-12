@@ -35,8 +35,7 @@ $(navLink).on('click', function() {
 });
 
 $(portfolioBtn).on('click', function() {
-	var target =  '#' + $(this).children().attr('data-target');
-	console.log(target)
+	var target =  '#' + $(this).attr('data-target');
 	$('html, body').animate({
 		scrollTop: $(target).offset().top
 	}, 1000);
