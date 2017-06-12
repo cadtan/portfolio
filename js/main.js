@@ -7,6 +7,7 @@
 var mobileBar = $('.mobile-bar');
 var navMenu = $(".nav-menu");
 var navLink = $(".nav-menu li a");
+var portfolioBtn = $(".portfolio-btn");
 
 
 // Resize nav menu on scroll
@@ -25,8 +26,16 @@ $(mobileBar).on('click', function() {
 });
 
 // Scroll to section
-navLink.on('click', function() {
+$(navLink).on('click', function() {
 	var target =  '#' + $(this).attr('data-target');
+	console.log(target)
+	$('html, body').animate({
+		scrollTop: $(target).offset().top
+	}, 1000);
+});
+
+$(portfolioBtn).on('click', function() {
+	var target =  '#' + $(this).children().attr('data-target');
 	console.log(target)
 	$('html, body').animate({
 		scrollTop: $(target).offset().top
@@ -38,24 +47,29 @@ navLink.on('click', function() {
   Parallax
 ==================================== */
 
-// $(window).scroll( function() {
-// 	parallax();
-// });
+$window = $(window);
+
+// Disable parallax on window resize < 800
+$( window ).resize(function() {
+	if( $window .width() > 800){
+		$window.scroll(function() {	 
+		  parallax();
+		});
+	}
+});
 
 // Disable parallax on mobile
-if( $(window).width() > 800) {
-  $(window).scroll(function() {	 
+if( $window.width() > 800) {
+  $window.scroll(function() {	 
     parallax();
   });
 }
 
 function parallax() {
-	// var wScroll = $(window).scrollTop();
-	var wScroll = $(window).scrollTop(); 
-
-	$('.parallax-bg').css('background-position', 'center ' + -(wScroll*0.3) + 'px');
-
-	$('.parallax-bg2').css('background-position', 'center ' + -(wScroll*0.3) + 'px');
+	var wScroll = $window.scrollTop(); 
+	var speed = 0.3;
+	$('.parallax-bg').css('background-position', 'center ' + -(wScroll*speed) + 'px');
+	$('.parallax-bg2').css('background-position', 'center ' + -(wScroll*speed) + 'px');
 }
 
 /* ================================= 
@@ -67,6 +81,7 @@ var $overlay = $("<div id='overlay'></div>");
 var $slideContainer = $("<div class='slideContainer'></div>");
 var $image = $("<img class='slide-image'>");
 var $content = $("<div class='content'></div>");
+var $contentOverlay = $("<div class='content-overlay'></div>");
 var $nextBtn = $("<button class='next-btn'><span></span></button>");
 var $prevBtn = $("<button class='prev-btn'><span></span></button>");
 var $closeBtn = $("<button class='close-btn'><span class='close-cir'>x</span>Close</button>");
@@ -81,7 +96,8 @@ $slideContainer.append($closeBtn);
 $slideContainer.append($nextBtn);
 $slideContainer.append($prevBtn);
 $slideContainer.append($image);
-$slideContainer.append($content);
+$contentOverlay.append($content);
+$overlay.append($contentOverlay);
 $overlay.append($slideContainer);
 $("body").append($overlay);
 
@@ -90,38 +106,50 @@ var projects = [
 	{
 		imageUrl: "images/project1.jpg",
 		largeImageUrl: "images/project1-large.png",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+		title: "Online Registration Form",
+		description: "Treehouse Techdegree Project: This project challenges to build a responsive, mobile-first registration form using a variety of HTML form element",
+		githubUrl: "https://github.com/cadtan/registration-form",
+		siteUrl: "https://cadtan.github.io/registration-form"
 	},
 	{
 		imageUrl: "images/project2.jpg",
 		largeImageUrl: "images/project2-large.png",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+		title: "Interactive Photo Gallery",
+		description: "Treehouse Techdegree Project: Use HTML, CSS and the popular programming language JavaScript to create an interactive, searchable gallery of photos.",
+		githubUrl: "https://github.com/cadtan/photo-gallery",
+		siteUrl: "https://cadtan.github.io/photo-gallery"
 	},
 	{
 		imageUrl: "images/project3.jpg",
 		largeImageUrl: "images/project3-large.png",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+		title: "Interactive Video Player",
+		description: "Treehouse Techdegree Project: Using JavaScript and the HTML5 Video API to build an HTML5 video player",
+		githubUrl: "https://github.com/cadtan/video-player",
+		siteUrl: "https://cadtan.github.io/video-player"
 	},
 	{
 		imageUrl: "images/project4.jpg",
 		largeImageUrl: "images/project4-large.png",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+		title: "Web App Dashboard",
+		description: "Treehouse Techdegree Project: Build an interactive dashboard for a web application using advanced web techniques including SVG graphics and JavaScript programming.",
+		githubUrl: "https://github.com/cadtan/web_app_dashboard",
+		siteUrl: "https://cadtan.github.io/web_app_dashboard"
 	},
 	{
 		imageUrl: "images/project5.jpg",
 		largeImageUrl: "images/project5-large.png",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+		title: "Gallery From Public APIs",
+		description: "Treehouse Techdegree Project: Using JavaScript programming create a gallery of information and images by communicating with a third-party API (Application Programming Interface).",
+		githubUrl: "https://github.com/cadtan/web_api",
+		siteUrl: " https://cadtan.github.io/web_api"
 	},
 	{
 		imageUrl: "images/project6.jpg",
 		largeImageUrl: "images/project6-large.png",
-		title: "project title",
-		description: "Lorem Ipsum has been the industry's standards, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+		title: "Gym Website",
+		description: "Gym Project: This is an one page website I created to practice my skills on JavaScript and CSS layout.",
+		githubUrl: "https://github.com/cadtan/web_api",
+		siteUrl: "https://cadtan.github.io/web_app_dashboard"
 	}
 ]
 
@@ -144,7 +172,6 @@ function printHtml() {
 printHtml();
 
 
-
 /*   Lightbox
 ==================================== */
 
@@ -153,25 +180,42 @@ function showSlide() {
 	var index = currentSlide;
 	var getLargeImage = projects[index].largeImageUrl;
 	var slideImage = $image.attr('src', getLargeImage);
+	var slideTitle = projects[index].title;
 	var slideDescription = projects[index].description;
+	var githubUrl = projects[index].githubUrl;
+	var siteUrl = projects[index].siteUrl;
+	var contentHtml = "";
+	// Show overlay
 	$overlay.show();
-
-
+	// Add slide animation
 	if(	$(slideImage).hasClass('slide-in') ) {
 		$(slideImage).removeClass('slide-in').addClass('slide-out');			
 	} else {
 		$(slideImage).addClass('slide-in').removeClass('slide-out');
 	}
 
+	// if(	$content.hasClass('fade-in') ) {
+	// 	$content.removeClass('fade-in').addClass('fade-out');			
+	// } else {
+	// 	$content.addClass('fade-in').removeClass('fade-out');
+	// }
 
-	
+	if(	$content.hasClass('slide-in') ) {
+		$content.removeClass('slide-in').addClass('slide-out');			
+	} else {
+		$content.addClass('slide-in').removeClass('slide-out');
+	}
+
+
+
+	// Get slide image
 	$image.attr('src', getLargeImage)
-
-	$content.html("<p>" + slideDescription + "</p>");
+	// Print content html
+	contentHtml += "<h3 class='slide-title'>" + slideTitle + "</h3>" +  "<p>" + slideDescription + "</p>";
+	contentHtml += "<button class='github-btn'><a href='" + githubUrl + "'>Visit Github</a></button>";
+	contentHtml += "<button class='siteUrl-btn'><a href='" + siteUrl + "'>Visit Website</a></button>";
+	$content.html(contentHtml);
 }
-
-
-
 
 // Show overlay on click event
 $('.gallery li').on('click', projectLink, function( event ){
@@ -186,8 +230,6 @@ $nextBtn.on('click', function() {
 	if( currentSlide >= projects.length ) {
 		currentSlide = 0;
 	}
-	
-
 	showSlide();
 });
 
@@ -204,8 +246,6 @@ $prevBtn.on('click', function() {
 $closeBtn.on('click', function() {
 	$overlay.hide();
 });
-
-
 
 
 /* ================================= 
@@ -229,7 +269,6 @@ function check_if_in_view ( elem ) {
 
 	//check to see if this current container is within viewport
 	return ( (elementBottomPosition >= windowTopPosition) && (elementTopPosition <= windowBottomPosition) );
-
 }
 
 function checkAnimation() {

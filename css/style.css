@@ -163,15 +163,11 @@ header {
 	color: #cdfbff;
 }
 
-
-
-
 /* home
 ===================== */
 
 .home {
 	background: url(../images/home-bg.jpg);
-	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	text-align: left;
@@ -200,6 +196,10 @@ header {
 	margin-bottom: 2em;
 }
 
+.portfolio-btn a {
+	color: #fff;
+}
+
 .orange {
 	color: #f65d04;
 }
@@ -218,10 +218,9 @@ header {
 ===================== */
 
 .about {
-	background: url(../images/about-bg.jpg);
 	background: url(../images/skills-bg.jpg);
 	background-size: cover;
-	background-repeat: no-repeat;
+	/*background-repeat: no-repeat;*/
 	background-position: center;
 	color: #fff;
 }
@@ -283,7 +282,6 @@ header {
 /* portfolio
 ===================== */
 
-
 .portfolio {
 	background-color: #26474e;
 	background: url(../images/skills-bg.jpg);
@@ -325,7 +323,6 @@ header {
 
 .portfolio h2 {
 	margin-bottom: 50px;
-	/*text-align: center;*/
 }
 
 .project {
@@ -379,38 +376,29 @@ header {
 	text-align: center;
 }
 
-.content p {
-	padding: 2em;
-  	font-size: .8em;
+.content-overlay {
+	position: absolute;
+	text-align: center; /*to center buttons*/
+	padding-top: 1em;
+	width: 100%;
+	height: 100%;
+	top: 45vh;
+	background-color: rgba(0,0,0, .6);
+  	z-index: 1;
 }
 
-.slide-image {
-	position: relative;
-	transition: all ease-in-out 1000ms;
-	animation-timing-function: ease-in;
-	animation-iteration-count: 1; 
-	animation-duration: 800ms;
+.github-btn,
+.siteUrl-btn {
+	display: inline-block; /* to center buttons*/
+	padding: .5em 1em;
+	margin-left: 1em;
 }
 
-.slide-image.slide-out  {
-	animation-name: slide-out;
+.github-btn a,
+.siteUrl-btn a {
+	color: #fff;
+	font-size: 0.8em;
 }
-
-.slide-image.slide-in  {
-	animation-name: slide-in;
-}
-
-/* Left to -50px */
-@keyframes slide-out { 
-   0% { opacity: 0; left: -50px; }
-   100% { opacity: 1; left: 0px; } 
-}
-
-@keyframes slide-in { 
-   0% { opacity: 0; left: -50px; }
-   100% { opacity: 1; left: 0px; } 
-}
-
 
 .close-btn {
 	position: absolute;
@@ -422,7 +410,7 @@ header {
 	border: 0;
 	background-color: transparent;
 	text-transform: uppercase;
-	z-index: 333;
+	z-index: 666;
 }
 
 .close-btn:hover {
@@ -494,6 +482,65 @@ header {
 	margin-top: -100px;
 }
 
+.content p {
+	max-width: 65em;
+	text-align: center;
+	padding: 2em;
+  	font-size: .8em;
+  	color: #fff;
+}
+
+.slide-title {
+	font-size: 1.2em;
+	text-align: center;
+}
+
+
+/* Sliding animation */
+
+.content {
+	position: relative;
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1; 
+	animation-duration: 600ms;
+}
+
+.content.slide-out  {
+	animation-name: slide-out;
+}
+
+.content.slide-in  {
+	animation-name: slide-in;
+}
+
+.slide-image {
+	position: relative;
+	transition: all ease-in-out 1000ms;
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1; 
+	animation-duration: 400ms;
+}
+
+.slide-image.slide-out  {
+	animation-name: slide-out;
+}
+
+.slide-image.slide-in  {
+	animation-name: slide-in;
+}
+
+/* Left to -50px */
+@keyframes slide-out { 
+   0% { opacity: 0; left: -50px; }
+   100% { opacity: 1; left: 0px; } 
+}
+
+@keyframes slide-in { 
+   0% { opacity: 0; left: -50px; }
+   100% { opacity: 1; left: 0px; } 
+}
+
+
 
 /* contact
 ===================== */
@@ -535,7 +582,6 @@ header {
 }
 
 
-
 /* footer
 ===================== */
 
@@ -566,6 +612,13 @@ footer .container {
 
 	.project:nth-child(2n + 0) { 
 		margin-right: 0;
+	}
+
+
+	.content-overlay {
+		position: absolute;
+		width: 100%;
+		top: 60vh;
 	}
 
 
@@ -612,7 +665,11 @@ footer .container {
 		margin: 0 auto;
 		font-size: 1em;
 		padding: 1em 0;
+	}
 
+	.github-btn,
+	.siteUrl-btn {
+		margin-left: 2em;
 	}
 
 }
@@ -623,7 +680,9 @@ footer .container {
 
 	.home {
 		height: 100vh;
+		background-size: cover; 
 		background-attachment: fixed;
+
 	}
 
 	.name {
