@@ -1,5 +1,4 @@
 
-
 /* ================================= 
   Menu Bar
 ==================================== */
@@ -65,10 +64,13 @@ if( $window.width() > 800) {
 }
 
 function parallax() {
+	var parallaxElements = $('.parallax-bg');
 	var wScroll = $window.scrollTop(); 
 	var speed = 0.3;
-	$('.parallax-bg').css('background-position', 'center ' + -(wScroll*speed) + 'px');
-	$('.parallax-bg2').css('background-position', 'center ' + -(wScroll*speed) + 'px');
+	$(parallaxElements).each( function() {
+		var element =  $(this);
+		element.css('background-position', 'center ' + -(wScroll*speed) + 'px');
+	});
 }
 
 /* ================================= 
@@ -193,26 +195,18 @@ function showSlide() {
 		$(slideImage).addClass('slide-in').removeClass('slide-out');
 	}
 
-	// if(	$content.hasClass('fade-in') ) {
-	// 	$content.removeClass('fade-in').addClass('fade-out');			
-	// } else {
-	// 	$content.addClass('fade-in').removeClass('fade-out');
-	// }
-
 	if(	$content.hasClass('slide-in') ) {
 		$content.removeClass('slide-in').addClass('slide-out');			
 	} else {
 		$content.addClass('slide-in').removeClass('slide-out');
 	}
 
-
-
 	// Get slide image
 	$image.attr('src', getLargeImage)
 	// Print content html
 	contentHtml += "<h3 class='slide-title'>" + slideTitle + "</h3>" +  "<p>" + slideDescription + "</p>";
-	contentHtml += "<button class='github-btn'><a href='" + githubUrl + "'>Visit Github</a></button>";
-	contentHtml += "<button class='siteUrl-btn'><a href='" + siteUrl + "'>Visit Website</a></button>";
+	contentHtml += "<a class='github-btn' href='" + githubUrl + "'>Visit Github</a>";
+	contentHtml += "<a class='siteUrl-btn' href='" + siteUrl + "'>Visit Website</a>";
 	$content.html(contentHtml);
 }
 
@@ -280,7 +274,7 @@ function checkAnimation() {
 	    $element.addClass('in-view');
 	  }
 	  // animate progress bar if in view
-	  if ( check_if_in_view( $element ) && $element.attr("id") === "skills-section" ) {
+	  if ( check_if_in_view( $element ) && $element.attr("id") === "skills" ) {
 	  	// console.log("in-view");
 	    moveProgressBar();
 	  } 
@@ -317,7 +311,6 @@ function moveProgressBar() {
 		);
 	});
 }
-
 
 
 

@@ -1,0 +1,56 @@
+/* Typography
+===================== */
+
+.home {
+  & h1 {
+    @include text( 3.5em, $l-height: 1em, $letter-spacing:.1em, $text-transform: initial );
+    margin-top: 100px;
+  
+    @media #{$brk-large} {
+      font-size: 5.5em;
+    }
+  }
+
+  & h2 {
+    @include text( 1.2em, $weight: 400 );
+
+    @media #{$brk-large} {
+      font-size: 1.4em;
+    }
+  }
+
+  & p {
+    width: 35%;
+    margin: 20px 0;
+  }
+}
+
+#about {
+  & p {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 1em;
+
+    @media #{$brk-large} {
+     font-size: .9em;
+     max-width: 100%;
+    }
+  }
+
+  & h2 {
+    @media #{$brk-large} {
+     font-size: 2.5em;
+    }
+  }
+}
+
+#contact {
+  & p {
+    max-width: 230px;
+    margin-top: 0;
+
+    @media #{$brk-medium} {
+       max-width: 600px;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+/* Columns
+===================== */
+
+.info {
+  @media #{$brk-large} {
+    float: left;
+    width: 45%;
+  }
+} 
+
+#skills {
+  @media #{$brk-large} {
+    float: right;
+    padding-top: 125px;
+    width: 45%;
+    margin-bottom: 0;
+    font-size: .9em;
+    font-weight: 700;
+  }
+}
+
+.skill {
+  float: left;
+  width: 50%;
+}
+
+.percent {
+  float: right;
+  text-align: right;
+  width: 50%;
+}
+
+.contact-content {
+  @media #{$brk-medium} {
+    float: left;
+    width: 45%;
+  }
+}
+
+.social-group {
+  @media #{$brk-medium} {
+    float: right;
+    width: 40%;
+    padding-top: 180px;
+  }
+}

@@ -1,0 +1,37 @@
+// Descriptive color variabless
+
+$white			: #fff;
+$blaze-orange	: #F65D04;
+$tangerine		: #F18F02;
+$aqua			: #00F8FF;
+$boulder		: #7D7D7D;
+
+
+// Functional color variables
+
+$content-text-base 	: $white;
+$color-link-default	: $blaze-orange;
+$color-link-hovered : $tangerine;
+
+
+// Font stacks
+
+$stack-sans-serif 	: Helvetica, Arial, sans-serif;
+$stack-Raleway 		: 'Raleway', $stack-sans-serif;
+
+
+// Border radius
+
+$br	: 5px;
+
+
+// Asset paths
+
+$path-img	: '../images';
+
+
+// Media query breakpoints
+
+$brk-small	: '(min-width: 550px)';
+$brk-medium	: '(min-width: 768px)';
+$brk-large	: '(min-width: 1024px)';

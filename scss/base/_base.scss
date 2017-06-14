@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @include text( .9em, 1.5, 400, $content-text-base, 0.08em );
+  font-family: $stack-Raleway;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  @include text( 2em, $weight: 700, $text-transform: uppercase );
+}
+
+h2 {
+  @include text( 1.6em);
+  padding: 1em 0;
+}
+
+h3 {
+  margin-top: 1em;
+}
+
+p {
+  padding: 1em 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}

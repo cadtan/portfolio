@@ -1,0 +1,48 @@
+/* Buttons
+===================== */
+
+.portfolio-btn,
+.resume-btn,
+.github-btn,
+.siteUrl-btn  {
+  display: inline-block;
+  @include text( .7em, $weight: 700, $color:$content-text-base, $letter-spacing:.05em, $text-transform: uppercase );
+  border-radius: $br;
+  margin-bottom: 2em;
+  padding: 1em;
+  background-color: $color-link-default;
+  cursor: pointer;
+  transition: all ease-in-out 200ms;
+
+  @media #{$brk-large} {
+    font-size: .9em;
+    padding: .8em 1em;
+  }
+}
+
+.portfolio-btn:hover,
+.resume-btn:hover,
+.github-btn:hover,
+.siteUrl-btn:hover {
+  background-color: $color-link-hovered;
+}
+
+.resume-btn {
+  margin-bottom: 6em;
+}
+
+.email {
+  display: inline-block;
+  margin: 2em 0;
+  color: #fff;
+
+  & a {
+    display: inline-block;
+    color: $aqua;
+  }
+
+  & a:hover {
+    color: $white;
+  }
+}
+
