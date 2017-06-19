@@ -139,7 +139,7 @@ var projects = [
 	{
 		imageUrl: "images/project5.jpg",
 		largeImageUrl: "images/project5-large.png",
-		title: "Gallery From Public APIs",
+		title: "Gallery From Public API",
 		description: "Treehouse Techdegree Project: Using JavaScript programming create a gallery of information and images by communicating with a third-party API (Application Programming Interface).",
 		githubUrl: "https://github.com/cadtan/web_api",
 		siteUrl: " https://cadtan.github.io/web_api"
@@ -147,10 +147,10 @@ var projects = [
 	{
 		imageUrl: "images/project6.jpg",
 		largeImageUrl: "images/project6-large.png",
-		title: "Gym Website",
-		description: "Gym Project: This is an one page website I created to practice my skills on JavaScript and CSS layout.",
-		githubUrl: "https://github.com/cadtan/web_api",
-		siteUrl: "https://cadtan.github.io/web_app_dashboard"
+		title: "Fitness Website",
+		description: "This is an one page website I created to practice my skills on JavaScript and CSS. The challenging part is to create the slider with sliding effects without using plugin.",
+		githubUrl: "https://github.com/cadtan/fitness",
+		siteUrl: "https://cadtan.github.io/fitness"
 	}
 ]
 
