@@ -143,12 +143,23 @@ header {
     #about {
       background-attachment: fixed; } }
 
+#portfolio .container {
+  padding-bottom: 0; }
+@media (min-width: 768px) {
+  #portfolio .container {
+    padding-bottom: 4em; } }
+
 #contact {
   background: url(../images/contact-bg.jpg);
   -webkit-background-size: cover;
   background-size: cover;
   background-color: #3c6472;
   background-position: 0% 0; }
+  #contact .container {
+    padding-top: 0; }
+  @media (min-width: 768px) {
+    #contact .container {
+      padding-top: 4em; } }
 
 .progress-bar {
   font-size: 0.7em;

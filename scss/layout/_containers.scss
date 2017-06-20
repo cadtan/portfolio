@@ -28,12 +28,34 @@
   }
 }
 
+#portfolio {
+  & .container {
+    padding-bottom: 0;
+  }
+
+  @media #{$brk-medium} {
+    & .container {
+        padding-bottom: 4em;
+    }
+  }
+}
+
 #contact {
   background: url(#{$path-img}/contact-bg.jpg);
   -webkit-background-size: cover;
   background-size: cover;
   background-color: #3c6472;
   background-position: 0% 0;
+
+  & .container {
+      padding-top: 0;
+  }
+
+  @media #{$brk-medium} {
+    & .container {
+        padding-top: 4em;
+    }
+  }
 }
 
 .progress-bar {
